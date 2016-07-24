@@ -32,7 +32,7 @@ PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任�
 下部分可以看到近五筆共乘活動、可點選查看所有共乘資訊
 
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/register.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/register.png)
 
 
 註冊功能、使用jquery做ajax，在client端先進行初步驗證，最終在上傳至server
@@ -42,35 +42,35 @@ PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任�
 
 
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/allcarpool.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/allcarpool.png)
 
 
 查看更多共乘資訊
 
 
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/search.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/search.png)
 
 
 鍵入文字搜尋結果
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/member.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/member.png)
 
 該使用者的共乘資訊
 
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/passeng.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/passeng.png)
 
 
 
 點選任一筆共乘資訊顯示共乘細目，此為乘客找司機的共乘活動，僅限一位司機，若司機已加入此次共乘，則其他人無法再加入
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/driver.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/driver.png)
 
 
 點選任一筆共乘資訊顯示共乘細目，此為司機提供座位的共乘活動，當提供的空位已額滿時，將鎖定加入按鈕，並不讓乘客加入
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/image/publish.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/publish.png)
 
 
 點選「刊登」，出現刊登頁面，可選擇「提供座位」、「找車搭」，，使用jquery的$.ajax與將資料上傳至pubilshController的publish function，
