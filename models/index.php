@@ -29,7 +29,7 @@ require_once("connect_db.php");
         function allcarpool()   //印出所有共乘資訊
         {
             $result=$this->connect->sql_query("select  * from Carpool_data where
-	        1");
+	        1 ORDER BY ID DESC");
 	        return $result;
         }
         function member()  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
