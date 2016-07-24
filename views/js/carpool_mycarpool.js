@@ -130,8 +130,13 @@ $(document).ready(function () {
                     alert("加入成功");
                     window.location.reload();
                }
-                 else
+                 else if(obj==false)
                     alert("加入失敗,您目前已有三個共乘活動");
+                 else if(obj=='cheat')
+                 {
+                    alert("請勿亂來");
+                     window.location.replace("index");
+                 }
             }
                  });
     });
