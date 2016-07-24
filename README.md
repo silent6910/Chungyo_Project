@@ -3,7 +3,7 @@
 
 新秀聯盟專題
 
-已經專題全部更改成MVC架構，VIEW的request除了共乘詳細資訊用GET的方式以外，其餘使用jquery的$.ajas的POST方式
+已經專題全部已更改成MVC架構(使用老師課堂教的那套，require core進來呼叫APP()的那套)，VIEW的request除了共乘詳細資訊用GET的方式以外，其餘使用jquery的$.ajas的POST方式
 
 PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任何關於前端部分的疑問，請通知我
 
