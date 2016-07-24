@@ -54,7 +54,7 @@ PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任�
 
 鍵入文字搜尋結果
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/member.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/member_carpool.png)
 
 該使用者的共乘資訊
 
@@ -70,7 +70,7 @@ PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任�
 
 點選任一筆共乘資訊顯示共乘細目，此為司機提供座位的共乘活動，當提供的空位已額滿時，將鎖定加入按鈕，並不讓乘客加入
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/publish.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/publisk.png)
 
 
 點選「刊登」，出現刊登頁面，可選擇「提供座位」、「找車搭」，，使用jquery的$.ajax與將資料上傳至pubilshController的publish function，
