@@ -39,6 +39,10 @@
             else
                 $this->connect->sql_query("update Carpool_data set lack=lack+1 where ID='{$_POST['ID']}'");
         }
+        function check_ischeat()
+        {
+            return mysqli_fetch_array($this->connect->sql_query("select * from Carpool_data where ID='{$_POST['ID']}'"));
+        }
         function master_quit()    //如果該使用者是主揪，則刪除所有此次共乘資訊
         {
             $this->connect->sql_query("DELETE FROM `Carpool_data` where ID='{$_POST['ID']}' ");
