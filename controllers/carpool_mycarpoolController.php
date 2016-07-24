@@ -39,9 +39,14 @@ class carpool_mycarpoolController extends Controller{
     }
     function join()  //此function讓使用者加入該次共乘
     {
-        if(!isset($_POST['ID'])||!isset($_POST['Account'])||!isset($_POST['type']))
-            die("請輸入正確");
+        
         $join=$this->model("carpool_mycarpool"); 
+        $check_ischeat=$join->check_ischeat();
+        if($check_ischeat['lack']==0 || $check_ischeat['ps_boolean']==1)  //驗證使用者是否透過更改前端的內容，破壞加入的規則
+        {
+            echo json_encode("cheat");
+            exit();
+        }
         $row=mysqli_fetch_array($join->check_userdata()); //使用者的哪個ID為0就更新為此次共乘的ID就退出，並回傳成功訊息
         if($row['ID1']==0)
 		    $join->lack_reduce("ID1");
