@@ -1,0 +1,13 @@
+  .form-group
+    {
+        width:40%;
+        height:50px
+    }
+  #text_label
+  {
+    display:inline;  
+  }
+  h7
+  {
+    color:red;
+  }

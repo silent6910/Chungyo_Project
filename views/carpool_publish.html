@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head >
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  <link rel="stylesheet" href="/resources/demos/style.css">
+   <link rel="stylesheet" href="https://job-qwerrtty.c9users.io/project_test2/views/css/carpool_publish.css">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/carpool_publish.js"></script>
+
+
+</head>
+<body >
+    <form id='publish_form'>
+        
+    <ul class="nav nav-tabs" style="float:right" id="navbar-spy">
+        <li><a  href="index">首頁</a></li>
+    </ul>
+    <h3 id="qq"style="color:green">刊登共乘</h3>
+<div class="publish_page" style="width:auto;height:auto;">
+    
+    <div class="publish_content">
+        <div id="radio"class="publish_option">
+            我要
+            <input type="radio" id="radio1" name="radios" value="all" checked>
+            <label for="radio1" style="color:#00CACA">提供座位</label>
+            <input type="radio" id="radio2" name="radios"value="false">
+            <label for="radio2" style="color:#00CACA">找車搭</label>
+ 
+        </div>
+        <div style="width:295px;height:1px;margin:0px auto;padding:0px;background-color:#D5D5D5;overflow:hidden;">
+       <!-- 線-->     
+        </div>
+        <div class="publish_location">
+            出發地
+            <input type="text" style="width:280px"name="pointA"  placeholder="輸入地址或地點"/>
+        </div>
+        <div class="publish_location">
+            目的地
+            <input type="text" name="pointB"   style="width:280px"placeholder="輸入地址或地點"/>
+        </div>
+        <div class="timetext">
+            <p>選擇日期<input type="button" id="datepicker" value="c" ></p>
+        </div>
+        
+        <div class="timetext">
+            <font>選擇時間</font>
+            <select name="time" id="time" >
+            　<option value="1:00">1:00</option>
+            　<option value="2:00">2:00</option>
+            　<option value="3:00">3:00</option>
+            　<option value="4:00">4:00</option>
+            　<option value="5:00">5:00</option>
+            　<option value="6:00">6:00</option>
+            　<option value="7:00">7:00</option>
+            　<option value="8:00">8:00</option>
+            　<option value="9:00">9:00</option>
+            　<option value="10:00">10:00</option>
+            　<option value="11:00">11:00</option>
+            　<option value="12:00">12:00</option>
+            　<option value="13:00">13:00</option>
+            　<option value="14:00">14:00</option>
+            　<option value="15:00">15:00</option>
+            　<option value="16:00">16:00</option>
+            　<option value="17:00">17:00</option>
+            　<option value="18:00">18:00</option>
+            　<option value="19:00">19:00</option>
+            　<option value="20:00">20:00</option>
+            　<option value="21:00">21:00</option>
+            　<option value="22:00">22:00</option>
+            　<option value="23:00">23:00</option>
+            　<option value="24:00">24:00</option>
+            　<option value="任何時候">任何時候</option>
+            </select>
+        </div>
+        <div>
+            <div class="publish_location">
+                <font id="seat">提供座位數</font>
+                    <button type="button" class="btn btn-default" id="lack_reduce" style="font-size:10px">
+                        -</button>
+                       <input type="text" value='1' style="width:25px; "id="lack"name="lack"/>
+                    <button type="button" class="btn btn-default" id="lack_plus"style="font-size:10px">
+                        +</button>
+            </div>
+    
+            <div class="publish_location">
+                每位價格
+                <input type="text" id="price" style="width:80px; "name="price"/>
+                <button type="button" class="btn btn-success" name="publish"id="publish_button"style="font-size:10px;float:right">
+                    刊登</button>
+            </div>
+        </div>
+       
+    </div>
+    <div class="publish_content2">
+         <form>
+             <input type="text" name="Account" style="display:none" id="Account"/>
+             <input type="text" name="type" style="display:none" id="type"/>
+             <input type="text" name="date" style="display:none" id="date_none"/>
+        <div style="font-size:20px">
+            <input type="checkbox" name="food" id="food" value="0" />禁止飲食<br>
+            <input type="checkbox" name="pet" id="pet"value="0"/>禁止寵物<br>
+            <input type="checkbox" name="baggage" id="baggage"value="0"/>禁止大型行李<br>
+            <input type="checkbox" name="smoke" id="smoke"value="0"/>禁止吸煙、喝酒、嚼檳榔<br>
+           
+        </div>
+         </form>
+         <br><br>
+         <div>
+             <p style="font-size:20px " >備註</p>
+         </div>
+         <div>
+             <textarea name="remark" rows="5" cols="25"> </textarea>
+         </div>
+          
+    </div>
+</div>
+    
+    
+    
+</form>    
+    
+</body>

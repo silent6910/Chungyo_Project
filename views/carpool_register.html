@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://job-qwerrtty.c9users.io/project_test2/views/css/carpool_register.css">
+
+   <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/jquery.js"></script>
+   <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/carpool_register.js"></script>
+   
+   <script type="text/javascript" >
+   
+   </script>
+   
+</head>  
+<body>
+     
+
+<form  role="form" style="font-family:Microsoft JhengHei;display:inline; " 
+id="register" method=post>
+  <div >
+  <ul class="nav nav-tabs" style="float:right">
+        <li><a href="index">首頁</a></li>
+        <li><a href="register">註冊</a></li>
+        <li><a href="publish" style="color:green">刊登</a></li>
+    </ul>
+</div>
+<br>
+     <div  class="col-lg-12 "style="margin-left:150px;margin-top:50px">
+  <div class="form-group"  >
+    <div id="text_label">
+    <label for="exampleInputEmail1" >*帳號</label>  <h7 id="Account_label"></h7>
+    </div>
+    <input type="text" class="form-control" name="Account"id="Account" placeholder="輸入帳號"  required pattern="[A-Za-z0-9\w]{4,20}">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">*密碼</label>  <h7 id="Password_label"></h7>
+    <input type="password" class="form-control" name="Password" id="Password" placeholder="輸入密碼" required>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">*確認密碼</label>  <h7 id="Password2_label"></h7>
+    <input type="password" class="form-control" name="Password2" id="Password2" placeholder="再次輸入密碼" required>
+    
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">*電子郵件</label>  <h7 id="e-mail_label"></h7>
+    <input type="email" class="form-control"  name="e-mail" id="e-mail" placeholder="e-mail" required>
+    
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">暱稱</label>
+    <input type="text" class="form-control" value='' name="nickname"id="nickname" placeholder="暱稱"value='' >
+    
+  </div>
+  <!--<div class="form-group">
+    <label for="exampleInputFile">檔案上傳</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">在此示範區塊層級輔助說明文字。</p>
+  </div>  -->
+  <div>
+    <label>
+     <input type="radio" name="gender" value="男" checked/>男
+     <input type="radio" name="gender"value="女"/>女
+    </label>
+    </div>
+ <div>
+  <p class="help-block" >*為必填選項</p>
+</div>
+  <div class="form-group">
+  <button type="submit" id="registerbutton" name="send"class="btn btn-info" style="font-size:16px;float:right" >註冊</button>
+  </div>
+  
+   </div>
+  </form>
+
+
+</body>
+
+  
+</html>

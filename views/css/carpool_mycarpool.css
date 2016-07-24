@@ -1,0 +1,25 @@
+ .mycarpool_content
+    {
+        
+        margin-left:150px;
+        margin-top:50px;
+    }
+    .mycarpool_content .content
+    {
+            border-style:groove;
+            height:380px ;
+            width:450px ;
+    }
+    .mycarpool_content .content_head
+    {
+        
+    }
+    .member
+    {
+        margin-top:113px;
+        margin-right:150px;
+        float:right;
+        border-style:groove;
+        height:250px ;
+        width:250px ;
+    }

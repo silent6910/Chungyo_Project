@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head >
+    
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://job-qwerrtty.c9users.io/project_test2/views/css/carpool_mycarpool.css">
+    <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/jquery.js"></script>
+  <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/carpool_mycarpool.js"></script>
+</head>
+
+
+      
+<body >
+  
+   <form  method=post id="join_form">
+        <input type="text" name="Account" id="Account"value="cc" style="display:none" />
+        <input type="text" name="ID"  id="ID" style="display:none" value="cq"/>
+        <input type="text" name="type" id="type" style="display:none" value="driver" />
+        <input type="text" name="match" id="judgment" style="display:none"/>
+    </form>
+    <a id='home' herf="#" style="font-size:1.2em">首頁</a>
+    <div >
+        <div id="member" class="member">
+            參與者
+            </div>
+        <div class="mycarpool_content">
+            
+            <div >
+                <font style="font-size:1.8em;"id="main" >帳號</font>
+                <div id="photo">
+                    
+                </div>
+            </div>
+            
+            <div class="content_head">
+                <div>
+                    <p style="font-size:1.5em "id="location">預計放地點</p>
+                </div>
+                <div>
+                    <p  style="font-size:1.5em "id="date">預計放時間</p>
+                </div>
+            </div>
+            <div class="content" style="height:390px">
+                <div style="font-size:20px">
+                    <input type="checkbox" name=""id="food"/>禁止飲食<br>
+                    <input type="checkbox" name=""id="pet"/>禁止攜帶寵物<br>
+                    <input type="checkbox" name="" id="baggage"/>禁止攜帶大型行李<br>
+                    <input type="checkbox" name=""id="smoke"/>禁止吸煙、喝酒、嚼檳榔<br>
+                </div>
+                
+                <div style="margin-top:15px">
+                    <div>
+                         <p style="font-size:20px;">備註</p>
+                    </div>
+                     <div style="margin-top:10px">
+                         <textarea name="aaa" rows="5" cols="25" id="remark"></textarea>
+                     </div>
+                     <div style="margin-top:10px;font-size:20px">
+                         <font id="lack" >還剩幾人</font>
+                         <font style="float:right"id="price">每位價格</font>
+                     </div>
+                     <div>
+                         <button id="decide"class="btn btn-success"style="margin-top:20px;float:right">加入</button>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <font style="float:right"id="message"></font>
+    </div>
+</body>
+</html>
