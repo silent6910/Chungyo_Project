@@ -59,13 +59,13 @@ PHP部分已大部分都做註解，JS部分(views)部分，則無，若有任�
 該使用者的共乘資訊
 
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/passeng.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/mycarpool_passeng.png)
 
 
 
 點選任一筆共乘資訊顯示共乘細目，此為乘客找司機的共乘活動，僅限一位司機，若司機已加入此次共乘，則其他人無法再加入
 
-![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/driver.png)
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/mycarpool_driver.png)
 
 
 點選任一筆共乘資訊顯示共乘細目，此為司機提供座位的共乘活動，當提供的空位已額滿時，將鎖定加入按鈕，並不讓乘客加入
