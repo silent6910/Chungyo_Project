@@ -30,7 +30,7 @@
         		<li style=" width:450px;height:90px;" class="list-group-item">
         			<a href="../carpool_mycarpool?id=<?php echo $row["ID"] ?>"> 
         			<p ><?php echo $row["date"] . "  " . $row["time"] ?> 
-        			<font style="float:right;font-size:1.5em"><?php echo $row['Account']?></font>
+        			<font style="float:right;font-size:1.3em"><?php   echo  $row['Account']; if(isset($row['Nickname'])) echo "(".$row['Nickname'].")" ?></font>
         			</p>
         			<?php echo $data['photo_part1'].$row['Account'].$data['photo_part2']?>
         			<p style="font-size:1.0em"><?php echo $row["pointA"] . " 到 " . $row["pointB"] ?></p>

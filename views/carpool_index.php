@@ -33,8 +33,6 @@
         <li><a href="index/upload_photo_view" style="color:blue;font-weight:bolder">上傳大頭貼</a></li>
         <!-- Single button -->
     </ul>
-
-
 <br>
   <div class="search">
          <input id="search_text" type="text" name="a" style="width:250px;height:35px;" 
