@@ -9,8 +9,11 @@
              },
             success: function(json) 
             {
-                if(json=="false")
+                var obj=JSON.parse(json)
+                if(obj==false)
+                {
                     location.href="login";
+                }
                 else
                     $("#Account").val(json);
             }
