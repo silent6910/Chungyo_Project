@@ -2,6 +2,7 @@
 ##########################################
 //處理刊登的頁面
 ##########################################
+
     class publishController extends Controller
     {
         function index()

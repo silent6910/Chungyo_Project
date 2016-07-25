@@ -22,15 +22,16 @@
 </head>  
 <body style="font-family:Microsoft JhengHei; ">
   <ul class="nav nav-tabs"  >
-        <li><a  href="index">首頁</a></li>
-        <li><a  href="register">註冊</a></li>
+        <li><a  href="https://job-qwerrtty.c9users.io/project_test2/index">首頁</a></li>
+        <li><a  href="https://job-qwerrtty.c9users.io/project_test2/register">註冊</a></li>
         <li id="login"><a  ><?php  echo $data['word'];  ?></a></li>
-        <li><a  href="publish" style="color:green">刊登</a></li>
-        <li><a  href="index/membercarpool" style="float:right;">會員的共乘
+        <li><a  href="https://job-qwerrtty.c9users.io/project_test2/publish" style="color:green">刊登</a></li>
+        <li><a  href="https://job-qwerrtty.c9users.io/project_test2/index/membercarpool" style="float:right;">會員的共乘
         </a></li>
         <li style="float:right;margin-top:5px"><font style="font-size:20px">你好  
         <?php echo $data['user'] ?></font></li>
-        <li><a href="index/upload_photo_view" style="color:blue;font-weight:bolder">上傳大頭貼</a></li>
+        <li><a href="https://job-qwerrtty.c9users.io/project_test2/index/upload_photo_view" style="color:blue;font-weight:bolder">上傳大頭貼</a></li>
+        <li><a href="https://job-qwerrtty.c9users.io/project_test2/index/modify_data" >修改會員資料</a></li>
         <!-- Single button -->
     </ul>
 <br>

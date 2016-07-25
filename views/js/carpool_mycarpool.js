@@ -122,7 +122,7 @@ $(document).ready(function () {
             },
             success:function(json)
             {
-                alert(json);
+                
                 var obj = JSON.parse(json);
                 
                if(obj==true)

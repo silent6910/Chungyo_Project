@@ -49,6 +49,10 @@ require_once("connect_db.php");
                                             ID='{$result_ID['ID2']}' or
                                             ID='{$result_ID['ID3']}'");
         }
+        function modify_data($Account)
+        {
+            
+        }
         function upload_photo()   //上傳圖片
         {
             $id = $_POST["txtID"];

@@ -4,7 +4,7 @@ class checksessionController extends Controller
 {
   function index()
   {
-    echo (isset($_SESSION['user']))?$_SESSION['user']:json_encode(false);
+    echo (isset($_SESSION['user']))?$_SESSION['user']:("false");
   }
 }
 ?>

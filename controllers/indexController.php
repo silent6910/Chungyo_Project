@@ -71,9 +71,16 @@ class indexController extends Controller{
         $member->upload_photo();
         header("location:../index");
     }
+    function modify_data()
+    {
+        if(!isset($_SESSION['user']))
+            header("location:../login");
+        $this->view("carpool_modifydata.php");
+    }
     function unsetsesson()  //刪除session
     {
          unset($_SESSION['user']);
     }
+    
 }
 ?>
