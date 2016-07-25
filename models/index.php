@@ -47,11 +47,16 @@ require_once("connect_db.php");
                                             USING ( Account )where
                                             ID='{$result_ID['ID1']}' or 
                                             ID='{$result_ID['ID2']}' or
-                                            ID='{$result_ID['ID3']}'");
+                                            ID='{$result_ID['ID3']}'
+                                            ORDER BY ID DESC");
         }
-        function modify_data($Account)
+        function modify_data($Account,$email,$nickname)
         {
-            
+            $this->connect->sql_query("UPDATE `User_data` SET Nickname=$nickname,E-mail=$email
+            where Account='{$Account}'");
+            $pw=md5($_POST['Password']);
+            $this->connect->sql_query("UPDATE `User_data`  set Password='{$pw}'
+            where Account='{$Account}'");
         }
         function upload_photo()   //上傳圖片
         {

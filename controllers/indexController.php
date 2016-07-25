@@ -77,6 +77,21 @@ class indexController extends Controller{
             header("location:../login");
         $this->view("carpool_modifydata.php");
     }
+    function modify_data_update()
+    {
+        if($_POST['Password']=='')
+        {
+            echo "no"; 
+            exit();
+        }
+        $email=(isset($_POST['e-mail']))? htmlentities("{$_POST['e-mail']}"):"E-mail";
+        $nickname=(isset($_POST['nickname']))? htmlentities("{$_POST['nickname']}"):"Nickname";
+        $modify=$this->model("index");
+        
+        $modify->modify_data($_SESSION['user'],$email,$nickname);
+        echo "yes";
+        exit();
+    }
     function unsetsesson()  //刪除session
     {
          unset($_SESSION['user']);

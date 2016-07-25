@@ -14,8 +14,8 @@
 <style type="text/css">
   
 </style>
-   <script type="text/javascript" src="js/jquery.js"></script>
-   <script type="text/javascript" src="js/carpool_memberdata.js"></script>
+   <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/jquery.js"></script>
+   <script type="text/javascript" src="https://job-qwerrtty.c9users.io/project_test2/views/js/carpool_memberdata.js"></script>
 
 
 
@@ -25,7 +25,7 @@
      
 
 <form  role="form" style="font-family:Microsoft JhengHei;display:inline; " 
-id="register" method=post enctype="multipart/form-data">
+id="register" method=post >
   <div >
   <ul class="nav nav-tabs" style="float:right">
         <li><a href="https://job-qwerrtty.c9users.io/project_test2/index">首頁</a></li>
@@ -34,21 +34,13 @@ id="register" method=post enctype="multipart/form-data">
 <br>
      <div  class="col-lg-12 "style="margin-left:150px;margin-top:50px">
   
-  <div class="form-group">
-    <label for="exampleInputPassword1">*舊密碼</label>  <h7 id="Password_label"></h7>
-    <input type="password" class="form-control" name="Password" id="Password" placeholder="輸入密碼" required>
-    
-  </div>
+  
   <div class="form-group">
     <label for="exampleInputPassword1">*新密碼</label>  <h7 id="Password2_label"></h7>
-    <input type="password" class="form-control" name="Password2" id="Password2" placeholder="輸入新密碼" required>
+    <input type="password" class="form-control" name="Password" id="Password2" placeholder="輸入新密碼" required>
     
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">*確認新密碼</label>  <h7 id="Password2_check_label"></h7>
-    <input type="password" class="form-control" name="Password2" id="Password2_check" placeholder="再次輸入密碼" required>
-    
-  </div>
+  
   
   <div class="form-group">
     <label for="exampleInputPassword1">電子郵件</label>  <h7 id="e-mail_label"></h7>
@@ -62,7 +54,7 @@ id="register" method=post enctype="multipart/form-data">
     
   </div>
   <div>
-    <button onclick="location.href='http://www.google.com'">修改</button>
+    <button id="modify">修改</button>
   </div>
   <div class="form-group">
   </div>
