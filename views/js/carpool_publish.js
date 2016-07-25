@@ -9,8 +9,8 @@
              },
             success: function(json) 
             {
-                var obj=JSON.parse(json)
-                if(obj==false)
+            
+                if(json.match("false"))
                 {
                     location.href="login";
                 }
