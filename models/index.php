@@ -50,12 +50,16 @@ require_once("connect_db.php");
                                             ID='{$result_ID['ID3']}'
                                             ORDER BY ID DESC");
         }
-        function modify_data($Account,$email,$nickname)
+        function modify_data($Account)
         {
-            $this->connect->sql_query("UPDATE `User_data` SET Nickname=$nickname,E-mail=$email
+            if($_POST['nickname']!='')
+            $this->connect->sql_query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
+            where Account='{$Account}'");
+            if($_POST['e-mail']!='')
+            $this->connect->sql_query("UPDATE `User_data` SET `E-mail`='{$_POST['e-mail']}'
             where Account='{$Account}'");
             $pw=md5($_POST['Password']);
-            $this->connect->sql_query("UPDATE `User_data`  set Password='{$pw}'
+            $this->connect->sql_query("UPDATE `User_AC_PW`  set Password='{$pw}'
             where Account='{$Account}'");
         }
         function upload_photo()   //上傳圖片

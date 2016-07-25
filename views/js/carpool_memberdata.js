@@ -15,7 +15,7 @@
              },
             success: function(json) 
             {
-                alert(json);
+                
                 if(json.match("no"))
                 {
                     alert("請輸入密碼");

@@ -84,11 +84,10 @@ class indexController extends Controller{
             echo "no"; 
             exit();
         }
-        $email=(isset($_POST['e-mail']))? htmlentities("{$_POST['e-mail']}"):"E-mail";
-        $nickname=(isset($_POST['nickname']))? htmlentities("{$_POST['nickname']}"):"Nickname";
+     
         $modify=$this->model("index");
         
-        $modify->modify_data($_SESSION['user'],$email,$nickname);
+        $modify->modify_data($_SESSION['user']);
         echo "yes";
         exit();
     }
