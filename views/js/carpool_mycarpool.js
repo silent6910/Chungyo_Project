@@ -122,7 +122,7 @@ $(document).ready(function () {
             },
             success:function(json)
             {
-                
+                alert(json);
                 var obj = JSON.parse(json);
                 
                if(obj==true)
@@ -136,6 +136,11 @@ $(document).ready(function () {
                  {
                     alert("請勿亂來");
                      window.location.replace("index");
+                 }
+                 else if(json.match("login"))
+                 {
+                     alert("請先登入");
+                     window.location.replace("login");
                  }
             }
                  });

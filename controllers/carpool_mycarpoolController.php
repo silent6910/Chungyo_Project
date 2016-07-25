@@ -1,4 +1,5 @@
 <?php
+session_start();
 class carpool_mycarpoolController extends Controller{
     function index()
     {
@@ -39,7 +40,11 @@ class carpool_mycarpoolController extends Controller{
     }
     function join()  //此function讓使用者加入該次共乘
     {
-        
+        if(!isset($_SESSION['user']))
+        {
+            echo json_encode("login");
+            exit();
+        }
         $join=$this->model("carpool_mycarpool"); 
         $check_ischeat=$join->check_ischeat();
         if($check_ischeat['lack']==0 || $check_ischeat['ps_boolean']==1)  //驗證使用者是否透過更改前端的內容，破壞加入的規則
