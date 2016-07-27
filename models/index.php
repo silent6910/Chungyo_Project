@@ -6,10 +6,15 @@ require_once("connect_db.php");
         function __construct()
         {
             $this->connect=new databaseuse;
+            $this->DB=$this->connect->DB;
+        }
+        function __destruct()
+        {
+            $this->DB=null;
         }
         function index()  // 印出前五筆的共乘資訊
         {
-            $result=$this->connect->sql_query("SELECT * 
+            $result=$this->DB->query("SELECT * 
             FROM Carpool_data
             INNER JOIN User_data
             USING ( Account ) 
@@ -20,7 +25,7 @@ require_once("connect_db.php");
         function search()     //查詢關鍵字的共乘
         {
             $pointB=$_GET['pointB'];
-            $result=$this->connect->sql_query
+            $result=$this->DB->query
             ("select  * from Carpool_data 
             INNER JOIN User_data
             USING ( Account )
@@ -30,7 +35,7 @@ require_once("connect_db.php");
         }
         function allcarpool()   //印出所有共乘資訊
         {
-            $result=$this->connect->sql_query("select  * from Carpool_data 
+            $result=$this->DB->query("select  * from Carpool_data 
             INNER JOIN User_data
             USING ( Account )
             where 1 
@@ -40,9 +45,9 @@ require_once("connect_db.php");
         function member()  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
         {
             $Account=$_SESSION['user'];
-            $result_ID=mysqli_fetch_array($this->connect->sql_query("select  ID1,ID2,ID3 from User_AC_PW where
+            $result_ID=mysqli_fetch_array($this->DB->query("select  ID1,ID2,ID3 from User_AC_PW where
 	                Account='{$Account}'"));
-	        return $this->connect->sql_query("select  * from Carpool_data
+	        return $this->DB->query("select  * from Carpool_data
                                             INNER JOIN User_data
                                             USING ( Account )where
                                             ID='{$result_ID['ID1']}' or 
@@ -53,13 +58,13 @@ require_once("connect_db.php");
         function modify_data($Account)
         {
             if($_POST['nickname']!='')
-            $this->connect->sql_query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
+            $this->DB->query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
             where Account='{$Account}'");
             if($_POST['e-mail']!='')
-            $this->connect->sql_query("UPDATE `User_data` SET `E-mail`='{$_POST['e-mail']}'
+            $this->DB->query("UPDATE `User_data` SET `E-mail`='{$_POST['e-mail']}'
             where Account='{$Account}'");
             $pw=md5($_POST['Password']);
-            $this->connect->sql_query("UPDATE `User_AC_PW`  set Password='{$pw}'
+            $this->DB->query("UPDATE `User_AC_PW`  set Password='{$pw}'
             where Account='{$Account}'");
         }
         function upload_photo()   //上傳圖片
@@ -67,7 +72,7 @@ require_once("connect_db.php");
             $id = $_POST["txtID"];
         	$f = fopen($_FILES["fileImage"]["tmp_name"], "rb");
         	$picture = addslashes(fread($f, $_FILES["fileImage"]["size"]));
-        	$this->connect->sql_query("update User_data set photo='$picture' where Account='{$_SESSION['user']}'");
+        	$this->DB->query("update User_data set photo='$picture' where Account='{$_SESSION['user']}'");
         	
         }
     }

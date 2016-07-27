@@ -26,7 +26,7 @@
         <div class="indexWrap" >
             
           	<ul class="list-group" >
-        	<?php while ($row =mysqli_fetch_array($data['result'])):  ?>
+        	<?php while ($row =$data['result']->fetch()):  ?>
         		<li style=" width:450px;height:90px;" class="list-group-item">
         			<a href="../carpool_mycarpool?id=<?php echo $row["ID"] ?>"> 
         			<p ><?php echo $row["date"] . "  " . $row["time"] ?> 

@@ -5,6 +5,11 @@
         function __construct()
         {
             $this->connect=new databaseuse;
+            $this->DB=$this->connect->DB;
+        }
+        function __destruct()
+        {
+            $this->DB=null;
         }
         function getMAXID()  //取出最大ID並+1
         {

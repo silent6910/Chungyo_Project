@@ -6,11 +6,16 @@
         function __construct()
         {
             $this->connect=new databaseuse;
+            $this->DB=$this->connect->DB;
+        }
+        function __destruct()
+        {
+            $this->DB=null;
         }
         function login()
         {
             $PW=md5($_POST['Password']);
-        	return $this->connect->sql_query("select  * from User_AC_PW where
+        	return $this->DB->query("select  * from User_AC_PW where
         	Account='{$_POST['Account']}' AND Password='{$PW}'");
         }
     }

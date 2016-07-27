@@ -14,13 +14,15 @@
             if(!isset($_POST['Account']) || !isset($_POST['Password']))
 		        die("false");
             $login=$this->model("login");
-            if(mysqli_num_rows($login->login())>0)
+            $conunt=$login->login();
+            if(count($login->login())>0)
             {
         	   echo json_encode(true);
         	   $_SESSION['user']=$_POST['Account'];
 	        }
 	        else
         	   echo json_encode(false);
+        	
         }
     }
 ?>

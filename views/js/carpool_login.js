@@ -20,7 +20,7 @@
                 window.location.replace("index");
             }
                 else
-                    alert('登入失敗');
+                    alert("登入失敗");
             }
             });
         });

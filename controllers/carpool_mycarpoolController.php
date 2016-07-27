@@ -10,9 +10,9 @@ class carpool_mycarpoolController extends Controller{
         $control=$this->model("carpool_mycarpool");
         $result=$control->control();
         $member=$control->control_member();
-        while($row_member=mysqli_fetch_array($member))
+        while($row_member=$member->fetch())
 		    $sting_member.="成員:".$row_member['Account']." ";
-        $row=mysqli_fetch_array($result);
+        $row=$result->fetch();
         $array=array("member"=>$sting_member);
         echo json_encode(array_merge($row,$array),JSON_UNESCAPED_UNICODE);
         //將兩個不同的result合併
@@ -33,7 +33,7 @@ class carpool_mycarpoolController extends Controller{
 	        $quit->quit_updateID("ID1");
     	else if($row['ID2']==$_POST['ID'])
     	    $quit->quit_updateID("ID2");
-    	else if($row['ID3']==$_POST['ID'])
+    	else if($row['ID3']==$_POST['ID']) 
     	    $quit->quit_updateID("ID3");
         echo json_encode("quit");
         exit();
