@@ -46,7 +46,7 @@
         }
         function check_ischeat()
         {
-            return mysqli_fetch_array($this->DB->query("select * from Carpool_data where ID='{$_POST['ID']}'"));
+            return $this->DB->query("select * from Carpool_data where ID='{$_POST['ID']}'")->fetch();
         }
         function master_quit()    //如果該使用者是主揪，則刪除所有此次共乘資訊
         {

@@ -17,7 +17,7 @@
                 die();
             }
             $register=$this->model("register");
-            $row=mysqli_fetch_array($register->register_verify());
+            $row=$register->register_verify()->fetch();
             if($row['Account']!='') 
                 echo json_encode(false);
             else{

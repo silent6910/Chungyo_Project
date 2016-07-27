@@ -14,7 +14,6 @@
             if(!isset($_POST['Account']) || !isset($_POST['Password']))
 		        die("false");
             $login=$this->model("login");
-            $conunt=$login->login();
             if(count($login->login())>0)
             {
         	   echo json_encode(true);

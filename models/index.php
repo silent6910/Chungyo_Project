@@ -45,8 +45,8 @@ require_once("connect_db.php");
         function member()  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
         {
             $Account=$_SESSION['user'];
-            $result_ID=mysqli_fetch_array($this->DB->query("select  ID1,ID2,ID3 from User_AC_PW where
-	                Account='{$Account}'"));
+            $result_ID=$this->DB->query("select  ID1,ID2,ID3 from User_AC_PW where
+	                Account='{$Account}'")->fetch();
 	        return $this->DB->query("select  * from Carpool_data
                                             INNER JOIN User_data
                                             USING ( Account )where

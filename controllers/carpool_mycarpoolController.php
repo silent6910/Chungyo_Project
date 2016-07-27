@@ -28,7 +28,7 @@ class carpool_mycarpoolController extends Controller{
             echo json_encode("delete");
             exit();
         }
-        $row=mysqli_fetch_array($quit->check_userdata()); //退出的如果是一般使用者，則更新該使用者的ID
+        $row=$quit->check_userdata()->fetch(); //退出的如果是一般使用者，則更新該使用者的ID
         if($row['ID1']==$_POST['ID'])
 	        $quit->quit_updateID("ID1");
     	else if($row['ID2']==$_POST['ID'])
@@ -52,7 +52,7 @@ class carpool_mycarpoolController extends Controller{
             echo json_encode("cheat");
             exit();
         }
-        $row=mysqli_fetch_array($join->check_userdata()); //使用者的哪個ID為0就更新為此次共乘的ID就退出，並回傳成功訊息
+        $row=$join->check_userdata()->fetch(); //使用者的哪個ID為0就更新為此次共乘的ID就退出，並回傳成功訊息
         if($row['ID1']==0)
 		    $join->lack_reduce("ID1");
     	else if($row['ID2']==0)

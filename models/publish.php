@@ -13,7 +13,7 @@
         }
         function getMAXID()  //取出最大ID並+1
         {
-            $row=mysqli_fetch_array($this->connect->sql_query("SELECT MAX( ID ) AS ID FROM Carpool_data"));
+            $row=$this->DB->query("SELECT MAX( ID ) AS ID FROM Carpool_data")->fetch();
             return $row['ID'];
         }
         function publish()     //刊登
@@ -30,13 +30,14 @@
         }
         function setID($ID)  //將使用者的ID設成該次共乘的ID，如三個ID都不為零，則告知該使用者已有三個共乘活動
         {
-            $row=$this->connect->sql_fetch_array($this->connect->sql_query("select * from User_AC_PW where Account='{$_POST['Account']}'"));
+            $row=$this->DB->query("select * from User_AC_PW 
+            where Account='{$_POST['Account']}'")->fetch();
     		if($row['ID1']==0)
-    			$this->connect->sql_query("update User_AC_PW set ID1=$ID where Account='{$_POST['Account']}'");
+    			$this->DB->query("update User_AC_PW set ID1=$ID where Account='{$_POST['Account']}'");
     		else if($row['ID2']==0)
-    			$this->connect->sql_query("update User_AC_PW set ID2=$ID where Account='{$_POST['Account']}'");
+    			$this->DB->query("update User_AC_PW set ID2=$ID where Account='{$_POST['Account']}'");
     		else if($row['ID3']==0)
-    			$this->connect->sql_query("update User_AC_PW set ID3=$ID where Account='{$_POST['Account']}'");
+    			$this->DB->query("update User_AC_PW set ID3=$ID where Account='{$_POST['Account']}'");
     		else	
     		    return false;
             return true;
@@ -45,7 +46,7 @@
         {
             $_POST['pointA']=htmlspecialchars($_POST['pointA']);
             $_POST['pointB']=htmlspecialchars($_POST['pointB']);
-            $this->connect->sql_query("INSERT INTO 
+            $this->DB->query("INSERT INTO 
         	`Carpool_data`
         	(  `Account` ,  `ID` ,  `pointA` ,  `pointB` ,  `date` ,  `time` , `lack` ,  `price`,`type`) 
         	VALUES (
@@ -61,7 +62,7 @@
         }
         function insert_Carpool_data_plus($ID)      //寫入該共乘所有額外資訊
         {
-            $this->connect->sql_query("INSERT INTO `Carpool_data_plus`
+            $this->DB->query("INSERT INTO `Carpool_data_plus`
         	(`ID`, `food`, `pet`, `baggage`, `smoke`, `remark`)
         	VALUES(
         	'{$ID}',
