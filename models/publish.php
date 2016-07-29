@@ -1,4 +1,5 @@
 <?php
+    ################這個model測試做完所有商業邏輯
     require_once("connect_db.php");
     class publish
     {
@@ -18,29 +19,40 @@
         }
         function publish()     //刊登
         {
-            $ID=$this->getMAXID()+1;
-            if($this->setID($ID)==true)
-            {
-                $this->insert_Carpool_data($ID);
-                $this->insert_Carpool_data_plus($ID);
-                return true;
+            try{
+                $dbh->beginTransaction();  //若有任一個SQL語句出錯，則全部回溯
+                $ID=$this->getMAXID()+1;
+                if($this->setID($ID)==true)
+                {
+                    $this->insert_Carpool_data($ID);
+                    $this->insert_Carpool_data_plus($ID);
+                    $this->DB->commit();
+                    return true;
+                }
+                else
+                    return false;
             }
-            else
-                return false;
+            catch (PDOException $err) {
+            	$this->DB->rollback();
+                return $err->getMessage();
+            	exit();
+            }
         }
         function setID($ID)  //將使用者的ID設成該次共乘的ID，如三個ID都不為零，則告知該使用者已有三個共乘活動
         {
             $row=$this->DB->query("select * from User_AC_PW 
             where Account='{$_POST['Account']}'")->fetch();
     		if($row['ID1']==0)
-    			$this->DB->query("update User_AC_PW set ID1=$ID where Account='{$_POST['Account']}'");
+    			return $this->DB->query("update User_AC_PW set ID1=$ID 
+    			where Account='{$_POST['Account']}'")->rowCount();
     		else if($row['ID2']==0)
-    			$this->DB->query("update User_AC_PW set ID2=$ID where Account='{$_POST['Account']}'");
+    			return $this->DB->query("update User_AC_PW set ID2=$ID 
+    			where Account='{$_POST['Account']}'")->rowCount();
     		else if($row['ID3']==0)
-    			$this->DB->query("update User_AC_PW set ID3=$ID where Account='{$_POST['Account']}'");
+    			return $this->DB->query("update User_AC_PW set ID3=$ID 
+    			where Account='{$_POST['Account']}'")->rowCount();
     		else	
     		    return false;
-            return true;
         }
         function insert_Carpool_data($ID)    //寫入該共乘所有資訊
         {
