@@ -20,7 +20,7 @@
         function publish()     //刊登
         {
             try{
-                $dbh->beginTransaction();  //若有任一個SQL語句出錯，則全部回溯
+                $this->DB->beginTransaction();  //若有任一個SQL語句出錯，則全部回溯
                 $ID=$this->getMAXID()+1;
                 if($this->setID($ID)==true)
                 {
