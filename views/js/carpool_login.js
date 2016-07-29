@@ -23,4 +23,7 @@
             }
             });
         });
+        $("#connection").click(function(){
+           alert("本人mail:mailforjob@gmail.com,有事可聯絡我");
+        });
     });
