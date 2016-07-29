@@ -55,7 +55,7 @@ require_once("connect_db.php");
                                             ID='{$result_ID['ID3']}'
                                             ORDER BY ID DESC");
         }
-        function modify_data($Account)
+        function modify_data($Account)  //修改會員資料
         {
             if($_POST['nickname']!='')
             $this->DB->query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
@@ -67,7 +67,7 @@ require_once("connect_db.php");
             $this->DB->query("UPDATE `User_AC_PW`  set Password='{$pw}'
             where Account='{$Account}'");
         }
-        function user_nickname($Account)
+        function user_nickname($Account)  //印出該會員的暱稱
         {
             $sql="select Nickname from User_data where Account ='{$Account}'";
             $row=$this->DB->query($sql)->fetch();

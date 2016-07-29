@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.ajax
+    $.ajax //若沒有登入(session)，則無法加入或提供座位
     ({
         url:"checksession",
         async: false,
@@ -16,7 +16,7 @@ $(document).ready(function () {
                 $("#Account").prop("value",json);
         }
     });
-    function load_data(obj)
+    function load_data(obj)  //寫入該次共乘的資料
     {
             $("#main").text("主揪: "+obj.Account);
             $("#photo").html("<img style='width:50px;height:50px;float:left;'src='https://job-qwerrtty.c9users.io/project_test2/models/show_image.php?Account="+obj.Account+"'"+'>');
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 $("#decide").attr("disabled",true);
     }
     var url = location.href;
-    function checkbox(checkbox,checked)
+    function checkbox(checkbox,checked)  //設定CHECKBOX的狀態
     {
         if(checked=='1')
             $(checkbox).prop("checked",true);
@@ -61,10 +61,10 @@ $(document).ready(function () {
             $(checkbox).prop("checked",false);
         $(checkbox).attr("disabled",true);
     }
-    temp=url.split("?");
+    temp=url.split("?");  //將get到的id拆解出來
     temp_id=temp[1].replace("id=","");
     $("#ID").prop("value",temp_id);
-    $.ajax
+    $.ajax        //拿id去載入資料
     ({
         type: 'GET',
         url: 'carpool_mycarpool/control?'+temp[1],
@@ -79,8 +79,7 @@ $(document).ready(function () {
             load_data(obj);
         }
     });
-
-    $("#decide").click(function(){
+    $("#decide").click(function(){    // 按鈕為「退出」時的情況
         if($("#decide").text()=='退出')
             $.ajax({
                  data: $('#join_form').serialize(),
@@ -111,7 +110,7 @@ $(document).ready(function () {
                     
                  }
             });
-        else
+        else                    //按鈕為「加入」時的情況
          $.ajax({
             data: $('#join_form').serialize(),
             type: 'POST',

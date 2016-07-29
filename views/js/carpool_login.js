@@ -4,7 +4,7 @@
             $.ajax(
             {
                 type: 'POST',
-                data: $("#login_form").serialize(),
+                data: $("#login_form").serialize(),  //將form的資料上傳
                 url: 'login/login',
                 dataType:"text",
           error: function(xhr) 
@@ -13,8 +13,7 @@
           },
             success: function(json) 
             {
-                var obj=JSON.parse(json);
-                if(obj==true)
+                if(json.match("true"))
             { 
                 alert('登入成功');
                 window.location.replace("index");

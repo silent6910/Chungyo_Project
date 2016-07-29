@@ -74,7 +74,7 @@
              }
              });
          }
-         verifyAccount();
+         verifyAccount();       //########這四個FUNCTION做帳號初步驗證
          verifyPassword();
          verifyPassword2();
          verifyemail();

@@ -13,7 +13,7 @@
         }
         function register_verify()  //驗證有無重複
         {
-            return $this->connect->sql_query(
+            return $this->DB->query(
              "select * 
              from User_AC_PW
              where Account='{$_POST['Account']}'");
@@ -23,10 +23,10 @@
             $PW=md5($_POST['Password']);
             $_POST['Account']=htmlentities($_POST['Account']);      //將特殊字元轉碼
             $_POST['nickname']=htmlentities($_POST['nickname']);
-            $this->connect->sql_query("INSERT INTO `User_AC_PW`
+            $this->DB->query("INSERT INTO `User_AC_PW`
             (`Account`, `Password`) VALUES ('{$_POST['Account']}'
             ,'{$PW}')");
-            $this->connect->sql_query("INSERT INTO `User_data`
+            $this->DB->query("INSERT INTO `User_data`
             (`Account`, `Gender`, `Nickname`, `E-mail`)
             Values(
             '{$_POST['Account']}',

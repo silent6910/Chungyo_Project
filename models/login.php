@@ -12,7 +12,7 @@
         {
             $this->DB=null;
         }
-        function login()
+        function login()      
         {
             $PW=md5($_POST['Password']);
         	return $this->DB->query("select  * from User_AC_PW where
