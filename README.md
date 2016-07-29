@@ -107,10 +107,33 @@ PHP部分已大部分都做註解，JS部分註解
 
 依據回傳值判斷是否刊登成功
 
+///////////////////////////////////////////////////////
+
+以下為資料庫截圖
+
+//////////////////////////////////////////////////////
+
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/Carpool_data.png)
 
 
+這是共乘資訊的部分，依table順序分別是該共乘的主揪、ID(primary key)、出發地、目的地、日期、時間
+
+提供幾個座位(需要幾個座位)、價錢(若乘客找司機則無)、類型（司機找乘客或乘客找司機）、判斷是否已經有司機提供給乘客座位
+
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/Carpool_plus.png)
 
 
+這是共乘額外資訊的部分，依table順序分別是該共乘的ID(primary key)、是否禁止飲食、是否禁止攜帶寵物
+
+是否禁止攜帶大型行李、是否禁止吸煙喝酒嚼檳榔、備註
+
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/User_AC_PW.png)
+
+這是使用者帳戶與密碼的部分，依table順序分別是帳號、密碼、三次共乘的ID
+
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/User_data.png)
+
+這是使用者帳戶與其額外資訊，依table順序分別是帳號、性別、暱稱、e-mail、大頭照
 
 
 
