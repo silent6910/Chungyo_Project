@@ -9,7 +9,7 @@
         function __construct()
         {
             $this->DB = new PDO("mysql:host=".$this->url.';'."dbname=".$this->database,
-                        $this->account,$this->password);
+                        $this->account,$this->password) or die("連不上server");
             $this->DB->exec("set names utf8");
         }
         function __get($name)
