@@ -1,6 +1,6 @@
 <?php
 ##########################################
-//處理刊登的頁面
+//處理刊登的頁面  這個Controller測試model做完所有商業邏輯
 ##########################################
 
     class publishController extends Controller
