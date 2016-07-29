@@ -13,14 +13,16 @@
         {
             if(!isset($_POST['Account']) || !isset($_POST['Password']))
 		        die("false");
+            
+            // $login=$this->model("login");
             $login=$this->model("login");
-            if(count($login->login())>0)
+            if($login->login()->rowCount()>0)
             {
-        	   echo json_encode(true);
-        	   $_SESSION['user']=$_POST['Account'];
+         	   echo ("true");
+         	   $_SESSION['user']=$_POST['Account'];
 	        }
 	        else
-        	   echo json_encode(false);
+         	   echo ("false");
         	
         }
     }
