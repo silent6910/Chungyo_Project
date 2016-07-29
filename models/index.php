@@ -42,9 +42,9 @@ require_once("connect_db.php");
             ORDER BY ID DESC");
 	        return $result;
         }
-        function member()  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
+        function member($Account)  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
         {
-            $Account=$_SESSION['user'];
+            
             $result_ID=$this->DB->query("select  ID1,ID2,ID3 from User_AC_PW where
 	                Account='{$Account}'")->fetch();
 	        return $this->DB->query("select  * from Carpool_data
@@ -66,6 +66,12 @@ require_once("connect_db.php");
             $pw=md5($_POST['Password']);
             $this->DB->query("UPDATE `User_AC_PW`  set Password='{$pw}'
             where Account='{$Account}'");
+        }
+        function user_nickname($Account)
+        {
+            $sql="select Nickname from User_data where Account ='{$Account}'";
+            $row=$this->DB->query($sql)->fetch();
+            return $row['Nickname'];
         }
         function upload_photo()   //上傳圖片
         {

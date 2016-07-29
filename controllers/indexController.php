@@ -12,6 +12,8 @@ class indexController extends Controller{
         {
             $word='登出';
             $user=$_SESSION['user'];
+            $user_photo="<img src='https://job-qwerrtty.c9users.io/project_test2/models/show_image.php?Account="
+            .$_SESSION['user']."'style='width:40px;height:40px;float:right;'></img>";
         }
         else 
         {
@@ -20,7 +22,10 @@ class indexController extends Controller{
         }
         $index=$this->model("index");  
         $result=$index->index();     //印出前五項共乘資訊
-        $data=array("word"=>$word,"user"=>$user,"result"=>$result,"photo"=>"models/show_image.php");
+        
+        $data=array("word"=>$word,"user"=>$user,"result"=>$result,
+        "photo"=>"models/show_image.php","nickname"=>$index->user_nickname($_SESSION['user']),
+        "user_photo"=>$user_photo);
         $this->view("carpool_index.php",$data);
     }
     function allcarpool()  //此function處理「更多共乘資訊」的頁面
@@ -53,7 +58,7 @@ class indexController extends Controller{
             exit();
         }
         $member=$this->model("index");
-        $data=array("result"=>$member->member(),"photo"=>"https://job-qwerrtty.c9users.io/project_test2/models/show_image.php");
+        $data=array("result"=>$member->member($_SESSION['user']),"photo"=>"https://job-qwerrtty.c9users.io/project_test2/models/show_image.php");
         $this->view("carpool_member_carpool.php",$data);
     }
     function upload_photo_view()  //此function 處理「上傳大頭貼」的頁面
