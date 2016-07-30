@@ -1,5 +1,5 @@
    $(document).ready(function () {
-        $.ajax({
+        $.ajax({         //若無登入(SESSION)則導為首頁
             url:"checksession",
             async: false,
             error: function()
@@ -39,7 +39,6 @@
                 },
                 success:function(json)
                 {
-                        
                     var obj=JSON.parse(json)
                     if(obj==true)
                     {
