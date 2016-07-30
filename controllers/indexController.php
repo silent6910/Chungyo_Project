@@ -98,7 +98,13 @@ class indexController extends Controller{
     }
     function unsetsesson()  //刪除session
     {
-         unset($_SESSION['user']);
+        if(isset($_SESSION['user']))
+        {
+            unset($_SESSION['user']);
+            echo ("true");
+        }
+        else
+            echo ("false");
     }
     
 }
