@@ -39,10 +39,9 @@
         {
             $this->DB->query("update User_AC_PW set 
             $ID=0 where Account='{$_POST['Account']}'");
-            if($_POST['type']=='passenger')
-                $this->DB->query("update Carpool_data set ps_boolean=0 where ID='{$_POST['ID']}'");
-            else
-                $this->DB->query("update Carpool_data set lack=lack+1 where ID='{$_POST['ID']}'");
+            ($_POST['type']=='passenger')?
+                $this->DB->query("update Carpool_data set ps_boolean=0 where ID='{$_POST['ID']}'")
+                :$this->DB->query("update Carpool_data set lack=lack+1 where ID='{$_POST['ID']}'");
         }
         function check_ischeat()
         {
