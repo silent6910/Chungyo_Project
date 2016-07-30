@@ -20,8 +20,9 @@
                 },
                 success: function(json) 
                 {
-                    alert("登出成功");
+                    (json.match("true"))?alert("登出成功"):alert("未知錯誤");
                     location.href="index";
+                    
                 }
             }); 
          }
