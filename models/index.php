@@ -7,6 +7,8 @@ require_once("connect_db.php");
         {
             $this->connect=new databaseuse;
             $this->DB=$this->connect->DB;
+            $this->DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //設定屬性,ATTR_ERRMODE:錯誤回報,ERRMODE_EXCEPTION:Throw exceptions
         }
         function __destruct()
         {
@@ -51,15 +53,23 @@ require_once("connect_db.php");
         }
         function modify_data($Account)  //修改會員資料
         {
-            if($_POST['nickname']!='')
-            $this->DB->query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
-            where Account='{$Account}'");
-            if($_POST['e-mail']!='')
-            $this->DB->query("UPDATE `User_data` SET `E-mail`='{$_POST['e-mail']}'
-            where Account='{$Account}'");
-            $pw=md5($_POST['Password']);
-            $this->DB->query("UPDATE `User_AC_PW`  set Password='{$pw}'
-            where Account='{$Account}'");
+            try{
+                $this->DB->beginTransaction();
+                if($_POST['nickname']!='')
+                    $this->DB->query("UPDATE `User_data` SET `Nickname`='{$_POST['nickname']}'
+                    where Account='{$Account}'");
+                if($_POST['e-mail']!='')
+                    $this->DB->query("UPDATE `User_data` SET `E-mail`='{$_POST['e-mail']}'
+                    where Account='{$Account}'");
+                $pw=md5($_POST['Password']);
+                $this->DB->query("UPDATE `User_AC_PW`  set Password='{$pw}'
+                where Account='{$Account}'");
+                $this->DB->commit();
+            }
+            catch (PDOException $err) {
+            	$this->DB->rollback();    //回溯
+                return $err->getMessage();
+            }
         }
         function user_nickname($Account)  //印出該會員的暱稱
         {
