@@ -1,6 +1,5 @@
        $(document).ready(function () {
          $("#modify").click(function(){
-            alert("qqq");
          $.ajax(
          {
              type:"POST",
