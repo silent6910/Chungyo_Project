@@ -11,9 +11,7 @@
             {
             
                 if(json.match("false"))
-                {
                     location.href="login";
-                }
                 else
                     $("#Account").val(json);
             }
@@ -28,7 +26,8 @@
         else if($("#price").prop("value")==''|| $("#pointA").val()==""  ||$("#pointB").val()=="" )
             alert("請輸入完整資料");
         else
-            $.ajax({
+            $.ajax
+            ({
                 type:"POST",
                 data: $('#publish_form').serialize(),
                 url:"publish/publish",
@@ -47,9 +46,11 @@
                     }
                     else if(obj==false)
                         alert("刊登失敗，您目前已有三個共乘活動")
-                    }
-                });
+                    else
+                        alert("發生錯誤，刊登失敗");
+                }
             });
+        });
         $("input[name='radios']").click(function() {
              if($("input[name='radios']:checked").val()=='false')
             {
