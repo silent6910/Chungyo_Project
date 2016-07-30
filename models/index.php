@@ -44,16 +44,10 @@ require_once("connect_db.php");
         }
         function member($Account)  //取出該使用者的共乘資訊，並加入該主揪的暱稱(主要功能)
         {
-            
-            $result_ID=$this->DB->query("select  ID1,ID2,ID3 from User_AC_PW where
-	                Account='{$Account}'")->fetch();
-	        return $this->DB->query("select  * from Carpool_data
-                                            INNER JOIN User_data
-                                            USING ( Account )where
-                                            ID='{$result_ID['ID1']}' or 
-                                            ID='{$result_ID['ID2']}' or
-                                            ID='{$result_ID['ID3']}'
-                                            ORDER BY ID DESC");
+            $ID="select ID from Carpool_ID_AC where Account='{$Account}'"; //取出Carpool_ID_AC的ID作為搜尋Carpool_data的ID用
+            $Inner="INNER JOIN User_data USING ( Account ) "; //查詢該共乘主揪的暱稱
+	        return $this->DB->query("select Carpool_data. * , User_data.Nickname
+	        from ($ID) as ID,`Carpool_data` $Inner where Carpool_data.ID = ID.ID");
         }
         function modify_data($Account)  //修改會員資料
         {
