@@ -7,25 +7,25 @@
         {
             $this->connect=new databaseuse;
             $this->DB=$this->connect->DB;
+            $this->DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //設定屬性,ATTR_ERRMODE:錯誤回報,ERRMODE_EXCEPTION:Throw exceptions
         }
         function __destruct()
         {
             $this->DB=null;
         }
-        function getMAXID()  //取出最大ID並+1
-        {
-            $row=$this->DB->query("SELECT MAX( ID ) AS ID FROM Carpool_data")->fetch();
-            return $row['ID'];
-        }
-        function publish()     //刊登
+        function publish($Account)     //刊登
         {
             try{
-                $this->DB->beginTransaction();  //若有任一個SQL語句出錯，則全部回溯
-                $ID=$this->getMAXID()+1;
-                if($this->setID($ID)==true)
+                $this->DB->beginTransaction();  //若有任一個SQL語句出錯，
+                //則全部回溯(得搭配setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);)
+                if($this->ID_count($Account)>=1)
                 {
-                    $this->insert_Carpool_data($ID);
-                    $this->insert_Carpool_data_plus($ID);
+                    $this->ID_count_add($Account);
+                    $ID=$this->getMAXID()+1;      //取出最大ID並+1
+                    $this->insert_Carpool_ID_AC($ID,$Account); //插入負責存放ID對應AC的table
+                    $this->insert_Carpool_data($ID);           //寫入該共乘所有資訊
+                    $this->insert_Carpool_data_plus($ID);      //寫入該共乘所有額外資訊
                     $this->DB->commit();
                     return true;
                 }
@@ -33,26 +33,29 @@
                     return false;
             }
             catch (PDOException $err) {
-            	$this->DB->rollback();
+            	$this->DB->rollback();    //回溯
                 return $err->getMessage();
-            	exit();
             }
         }
-        function setID($ID)  //將使用者的ID設成該次共乘的ID，如三個ID都不為零，則告知該使用者已有三個共乘活動
+        function ID_count($Account)  //回傳使用者現在是否已經有三個共乘活動
         {
-            $row=$this->DB->query("select * from User_AC_PW 
-            where Account='{$_POST['Account']}'")->fetch();
-    		if($row['ID1']==0)
-    			return $this->DB->query("update User_AC_PW set ID1=$ID 
-    			where Account='{$_POST['Account']}'")->rowCount();
-    		else if($row['ID2']==0)
-    			return $this->DB->query("update User_AC_PW set ID2=$ID 
-    			where Account='{$_POST['Account']}'")->rowCount();
-    		else if($row['ID3']==0)
-    			return $this->DB->query("update User_AC_PW set ID3=$ID 
-    			where Account='{$_POST['Account']}'")->rowCount();
-    		else	
-    		    return false;
+            return $this->DB->query("select ID_count from User_AC_PW 
+            where Account='{$Account}' AND ID_count<3")->rowCount();
+        }
+        function ID_count_add($Account)  //增加該使用者的共乘總數
+        {
+             $this->DB->query("update User_AC_PW 
+             set ID_count=ID_count+1 where Account='{$Account}'");
+        }
+        function getMAXID()  //取出最大ID並+1
+        {
+            $row=$this->DB->query("SELECT MAX( ID ) AS ID FROM Carpool_data")->fetch();
+            return $row['ID'];
+        }
+        function insert_Carpool_ID_AC($ID,$Account)  //插入負責存放ID對應AC的table
+        {
+            $this->DB->query("INSERT INTO  `Carpool_ID_AC` (`ID`,`Account`) 
+            values('{$ID}','{$Account}')");
         }
         function insert_Carpool_data($ID)    //寫入該共乘所有資訊
         {
