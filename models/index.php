@@ -16,7 +16,7 @@ require_once("connect_db.php");
         }
         function index()  // 印出前五筆的共乘資訊
         {
-            $result=$this->DB->query("SELECT * 
+            $result=$this->DB->query("SELECT Carpool_data.*,User_data.Nickname
             FROM Carpool_data
             INNER JOIN User_data
             USING ( Account ) 
@@ -68,7 +68,8 @@ require_once("connect_db.php");
             }
             catch (PDOException $err) {
             	$this->DB->rollback();    //回溯
-                return $err->getMessage();
+            	error_log($err->getMessage()."\n",3,"./php_errors.log"); //將錯誤寫入log裡
+                return ("error");
             }
         }
         function user_nickname($Account)  //印出該會員的暱稱
