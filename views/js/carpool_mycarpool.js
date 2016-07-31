@@ -88,14 +88,12 @@ $(document).ready(function () {
                  },
                  success:function(json)
                  {
-                     var obj=JSON.parse(json);
-                     
-                    if(obj=='quit')
+                    if(json.match('quit'))
                     {
                         alert("退出成功");
                         window.location.reload();
                     }
-                    else if(obj=='delete')
+                    else if(json.match('delete'))
                     {
                         alert("刪除成功");
                         window.location.replace("index");
