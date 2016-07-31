@@ -67,7 +67,7 @@ $(document).ready(function () {
     $.ajax        //拿id去載入資料
     ({
         type: 'GET',
-        url: 'carpool_mycarpool/control?'+temp[1],
+        url: 'carpool_mycarpool/load_data?'+temp[1],
         dataType:"text",
         async: false,
         error: function() {
