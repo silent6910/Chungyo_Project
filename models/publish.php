@@ -24,7 +24,7 @@
                     $this->ID_count_add($Account);
                     $ID=$this->getMAXID()+1;      //取出最大ID並+1
                     $this->insert_Carpool_ID_AC($ID,$Account); //插入負責存放ID對應AC的table
-                    $this->insert_Carpool_data($ID);           //寫入該共乘所有資訊
+                    $this->insert_Carpool_data($ID,$Account);           //寫入該共乘所有資訊
                     $this->insert_Carpool_data_plus($ID);      //寫入該共乘所有額外資訊
                     $this->DB->commit();
                     return true;
@@ -34,7 +34,8 @@
             }
             catch (PDOException $err) {
             	$this->DB->rollback();    //回溯
-                return $err->getMessage();
+                error_log($err->getMessage()."\n",3,"./php_errors.log"); //將錯誤寫入log裡
+                return ("error");
             }
         }
         function ID_count($Account)  //回傳使用者現在是否已經有三個共乘活動
@@ -57,7 +58,7 @@
             $this->DB->query("INSERT INTO  `Carpool_ID_AC` (`ID`,`Account`) 
             values('{$ID}','{$Account}')");
         }
-        function insert_Carpool_data($ID)    //寫入該共乘所有資訊
+        function insert_Carpool_data($ID,$Account)    //寫入該共乘所有資訊
         {
             $_POST['pointA']=htmlspecialchars($_POST['pointA']);
             $_POST['pointB']=htmlspecialchars($_POST['pointB']);
@@ -65,7 +66,7 @@
         	`Carpool_data`
         	(  `Account` ,  `ID` ,  `pointA` ,  `pointB` ,  `date` ,  `time` , `lack` ,  `price`,`type`) 
         	VALUES (
-        	'{$_POST['Account']}','{$ID}' , 
+        	'{$Account}','{$ID}' , 
         	'{$_POST['pointA']}',
         	'{$_POST['pointB']}',
         	'{$_POST['date']}',
