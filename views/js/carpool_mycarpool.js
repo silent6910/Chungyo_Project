@@ -10,10 +10,8 @@ $(document).ready(function () {
         },
         success: function(json) 
         {
-            if(json=="false")
+            if(json.match("false"))
                 $("#decide").prop("disabled",true);
-            else
-                $("#Account").prop("value",json);
         }
     });
     function load_data(obj)  //寫入該次共乘的資料
@@ -28,10 +26,7 @@ $(document).ready(function () {
             checkbox("#smoke",obj.smoke);
             $("#remark").text(obj.remark);
             $("#remark").attr("disabled",true);
-            if($("#Account").val()==obj.Account)
-                $("#judgment").val("true");
-            else
-                $("#judgment").val("false");
+            $("#Account").val(obj.Account);
             if(obj.type=='passenger')
             {
                 $("#type").prop("value",obj.type);
@@ -106,7 +101,7 @@ $(document).ready(function () {
                         window.location.replace("index");
                     }
                     else 
-                        alert("蝦咪都沒有");
+                        alert("出錯嚕");
                     
                  }
             });
