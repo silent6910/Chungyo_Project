@@ -13,18 +13,18 @@
         {
             $this->DB=null;
         }
-        function control() //把這ID的共乘資訊全印出來
+        function load_data($ID) //把這ID的共乘資訊全印出來
         {
             $result=$this->DB->query("select  * from Carpool_data
             inner join Carpool_data_plus 
             using(ID)
-            where ID='{$_GET['id']}'");
+            where ID='{$ID}'");
             return $result;
         }
-        function control_member()  //印出這次共乘的所有成員
+        function load_data_member($ID)  //印出這次共乘的所有成員
         {
-            return $this->DB->query("select  Account from User_AC_PW
-	        where ID1='{$_GET['id']}' or ID2='{$_GET['id']}' or ID3='{$_GET['id']}'");
+            return $this->DB->query("select  Account from Carpool_ID_AC
+	        where ID='{$ID}'");
 	        
         }
         
