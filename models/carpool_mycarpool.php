@@ -47,11 +47,11 @@
         {
             try{
                 $this->DB->beginTransaction();
+                $condition="(select Account from Carpool_ID_AC where ID='{$ID}')";
+                $this->DB->exec("update User_AC_PW set ID_count=ID_count-1 where Account=$condition");
                 $this->DB->query("DELETE FROM `Carpool_data` where ID='{$ID}' ");
                 $this->DB->query("DELETE FROM `Carpool_data_plus` where ID='{$ID}' ");
                 $this->DB->query("DELETE FROM `Carpool_ID_AC` where ID='{$ID}' ");
-                $condition="(select Account from Carpool_ID_AC where ID='{$ID}')";
-                $this->DB->query("update User_AC_PW set ID_count=ID_count-1 where Account=$condition");
                 $this->DB->commit();
                 return "delete";
             }
@@ -69,8 +69,8 @@
         function join($ID,$Account)   //更新該使用者的ID，並依照TYPE去更新該次共乘資訊
         {
             $this->DB->beginTransaction();
-            $User_AC_PW=$this->DB->exec("update User_AC_PW set 
-            ID_count=ID_count+1 where Account='{$Account}'");
+            $User_AC_PW=$this->DB->exec("update User_AC_PW set   
+            ID_count=ID_count+1 where Account='{$Account}'");         
             $Carpool_ID_AC=$this->DB->exec("INSERT INTO `Carpool_ID_AC`(`ID`, `Account`) VALUES ('{$ID}','{$Account}')");
 		    $Carpool_data=($_POST['type']=='driver')?
     			$this->DB->exec("update Carpool_data SET lack=lack-1 

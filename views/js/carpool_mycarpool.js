@@ -35,7 +35,7 @@ $(document).ready(function () {
                 $("#lack").text("需要"+obj.lack+"個空位");
                 $("#price").text(" ");
                 $("#decide").text("提供座位");
-                if(obj.ps_boolean==1 && !obj.member.match( $("#Account").prop("value")))
+                if(obj.ps_boolean==1 && !obj.member.match( $("#user").prop("value")))
                     $("#decide").attr("disabled",true);
             }
             else
