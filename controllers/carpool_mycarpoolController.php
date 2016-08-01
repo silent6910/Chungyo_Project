@@ -52,9 +52,8 @@ class carpool_mycarpoolController extends Controller{
 		    exit();
         }
     	else
-    	{
-		    echo $join->join($_POST['ID'],$_SESSION['user']);
-		}
+		    echo $join->join($_POST['ID'],$_SESSION['user']);  //加入該次共乘，並依照return值判斷是否成功
+
     }
 }
 ?>

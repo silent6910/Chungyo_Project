@@ -62,7 +62,7 @@
             }
             
         }
-        function check_ID_count($Account)
+        function check_ID_count($Account) //用來判斷使用者是否已有三個共乘活動
         {
             return $this->DB->query("SELECT  `ID_count` FROM `User_AC_PW` WHERE `Account`='{$Account}'");
         }
