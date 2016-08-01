@@ -12,6 +12,8 @@ $(document).ready(function () {
         {
             if(json.match("false"))
                 $("#decide").prop("disabled",true);
+            else
+                $("#user").val(json);
         }
     });
     function load_data(obj)  //寫入該次共乘的資料
@@ -42,7 +44,7 @@ $(document).ready(function () {
                 $("#price").text("每位價格: "+obj.price);
             }
             $("#member").text("參與者: "+obj.member)//整段讀取資料
-            if(obj.member.match($("#Account").val()))
+            if($("#member").text().match($("#user").val()))
                 $("#decide").text("退出");
             else if(obj.lack<=0)
                 $("#decide").attr("disabled",true);
@@ -83,7 +85,7 @@ $(document).ready(function () {
                  datatype:"text",
                  error:function()
                  {
-                     alert("出現錯誤q");
+                     alert("出現錯誤");
                      window.location.reload();
                  },
                  success:function(json)
@@ -110,32 +112,31 @@ $(document).ready(function () {
             url: 'carpool_mycarpool/join',
             dataType:"text",
             error: function() {
-              alert("出現錯誤c");
+              alert("出現錯誤");
             },
             success:function(json)
             {
-                
-                var obj = JSON.parse(json);
-                
-               if(obj==true)
-               {
-                    alert("加入成功");
-                    window.location.reload();
-               }
-                 else if(obj==false)
-                    alert("加入失敗,您目前已有三個共乘活動");
-                 else if(obj=='cheat')
-                 {
-                    alert("請勿亂來");
-                     window.location.replace("index");
-                 }
-                 else if(json.match("login"))
-                 {
-                     alert("請先登入");
-                     window.location.replace("login");
-                 }
+            if(json.match("true"))
+            {
+                alert("加入成功");
+                window.location.reload();
             }
-                 });
+            else if(json.match("false"))
+                alert("加入失敗,您目前已有三個共乘活動");
+            else if(json.match('cheat'))
+            {
+                alert("請勿亂來");
+                window.location.replace("index");
+            }
+            else if(json.match("login"))
+            {
+                alert("請先登入");
+                window.location.replace("login");
+            }
+            else
+                alert("出錯嚕");
+        }
+             });
     });
     $("#home").click(function(){
         location.href="index";
