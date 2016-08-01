@@ -1,11 +1,12 @@
 <?php
     class databaseuse
     {
-        protected $DB;
-        private $url="localhost",
-                $account="root",
-                $password="asd456",
-                $database="project";
+        protected $DB;         //避免有心人士利用，在github上的這部分我暫時遮蔽
+        private $url="******",
+                $account="******",
+                $password="******",
+                $database="********";
+    
         function __construct()
         {
             $this->DB = new PDO("mysql:host=".$this->url.';'."dbname=".$this->database,
