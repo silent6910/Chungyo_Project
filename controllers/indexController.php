@@ -76,13 +76,13 @@ class indexController extends Controller{
         $member->upload_photo();
         header("location:../index");
     }
-    function modify_data()
+    function modify_data()    //修改會員資料的頁面
     {
         if(!isset($_SESSION['user']))
             header("location:../login");
         $this->view("carpool_modifydata.php");
     }
-    function modify_data_update()
+    function modify_data_update()  //修改會員資料
     {
         if($_POST['Password']=='')
         {

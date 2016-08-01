@@ -5,11 +5,11 @@ class carpool_mycarpoolController extends Controller{
     {
         $this->view("carpool_mycarpool.html");
     }
-    function load_data()            //做資料寫入view的動作
+    function load_data()            //做資料寫入view的動作，拿get到的ID去搜資料庫，把資料塞進view裡，respond給使用者
     {
         $load=$this->model("carpool_mycarpool");
-        $result=$load->load_data($_GET['id']);
-        $member=$load->load_data_member($_GET['id']);
+        $result=$load->load_data($_GET['id']);    //載入該次共乘資訊
+        $member=$load->load_data_member($_GET['id']);  //載入該次共乘的所有使用者
         while($row_member=$member->fetch())
 		    $sting_member.="成員:".$row_member['Account']." ";
         $row=$result->fetch();
@@ -31,7 +31,7 @@ class carpool_mycarpoolController extends Controller{
         echo ("quit");
         exit();
     }
-    function join()  //此function讓使用者加入該次共乘p
+    function join()  //此function讓使用者加入該次共乘
     {
         if(!isset($_SESSION['user']))
         {
@@ -46,7 +46,7 @@ class carpool_mycarpoolController extends Controller{
             exit();
         }
         $ID_count=$join->check_ID_count($_SESSION['user'])->fetch();
-        if($ID_count['ID_count']>=3)
+        if($ID_count['ID_count']>=3)  //驗證該使用者是否已經有三個共乘活動
         {
             echo ("false");
 		    exit();

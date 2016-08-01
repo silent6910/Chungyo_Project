@@ -77,7 +77,7 @@
     			where ID='{$ID}'")
     			:$this->DB->exec("update Carpool_data SET ps_boolean=1 
     			where ID='{$ID}'");
-    		if($User_AC_PW!=1 || $Carpool_ID_AC!=1 || $Carpool_data!=1)
+    		if($User_AC_PW!=1 || $Carpool_ID_AC!=1 || $Carpool_data!=1) //若有任一SQL statement沒有成功，就回溯
     		{
     		    $this->DB->rollback();//回溯
     		    error_log("join出錯，三個SQL影響行數分別為".$User_AC_PW."_".$Carpool_ID_AC."_".$Carpool_data
