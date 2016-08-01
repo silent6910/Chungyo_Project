@@ -24,9 +24,16 @@ Controller把model require進來，然後整理完資料後，把資料包進vie
 
 亦有做路由的功能
 
-///////////////////////////
+//////////////////////////////////////
+
+2016/08/01
+
+完成優化資料庫部分
+
+////////////////////////////////////////
 
 2016/07/30
+
 未來將加入「多重條件搜尋」、「VIP系統」、「願望清單(指定條件，當如果有人刊登符合條件的共乘活動時，則自動通知該使用者)」
 
 「及時訊息通知(類似FB的『您有新訊息』時會出現！)」、「大頭貼裁切」、「刊登可選擇不同樣式」、「使用Goole Map API」
@@ -143,12 +150,15 @@ PHP部分已大部分都做註解，JS部分註解
 
 ![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/User_AC_PW.png)
 
-這是使用者帳戶與密碼的部分，依table順序分別是帳號、密碼、三次共乘的ID
+這是使用者帳戶與密碼的部分，依table順序分別是帳號、密碼、儲存該使用者現在所擁有的共乘活動數量
 
 ![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/User_data.png)
 
 這是使用者帳戶與其額外資訊，依table順序分別是帳號、性別、暱稱、e-mail、大頭照
 
+![image](https://github.com/silent6910/Chungyo_Project/raw/master/images/Carpool_ID_AC.png)
+
+這是優化過的資料庫系統，解決之前擴充性極差的問題，直接create 一個table，用來存每個使用者的每個共乘ID
 
 
 
